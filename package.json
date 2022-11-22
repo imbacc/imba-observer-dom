@@ -1,6 +1,6 @@
 {
   "name": "imba-observer-dom",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "DOM观察事件回调",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
