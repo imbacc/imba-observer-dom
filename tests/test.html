@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .blank {
+        background-color: antiquewhite !important;
+        transition: background-color 2s;
+      }
+
+      .container > div {
+        margin: 5px auto;
+        min-height: 100px;
+        min-width: 100px;
+        outline: 1px solid red;
+        background-color: tomato;
+      }
+
+      img {
+        transition: 0.6s opacity;
+        opacity: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+    </div>
+
+    <script>
+      const domHtml = (i) => `<div class="item">
+        <span>${i}</span>
+        <img decoding="async" loading="lazy" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e00124dc98f64b33ab005e99ab741705~tplv-k3u1fbpfcp-no-mark:240:240:240:160.awebp?" data-src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b078c865766948b9bddaf4650aa04ac0~tplv-k3u1fbpfcp-no-mark:240:240:240:160.awebp?" />
+      </div>`
+
+      let html = ''
+      for (let i = 1, j = 120; i < j; i++) {
+        html += domHtml(i)
+      }
+      document.querySelector('.container').innerHTML = html
+      // const imgList = document.querySelectorAll('img')
+      // const imgLoad = (e) => {
+      //   console.log('e', e)
+      //   imgDom.removeEventListener('onload', imgLoad)
+      // }
+      // imgList.forEach((imgDom) => {
+      //   imgDom.addEventListener('onload', imgLoad)
+      // })
+    </script>
+
+    <script type="module">
+      import { lazyDom } from '../dist/index.js'
+  
+      lazyDom({
+          domList: document.querySelectorAll('.item'),
+          threshold: 0.25
+      },(item) => {
+          // console.log('%c [ item ]-66', 'font-size:14px; background:#41b883; color:#ffffff;', item)
+          item.target.setAttribute('observer-state', 'finish')
+          item.target.setAttribute("class", "blank item")
+      })
+
+      lazyDom({
+          domList: document.querySelectorAll('img'),
+          threshold: 0.25
+      },(item) => {
+        setTimeout(() => {
+          // console.log('%c [ item ]-66', 'font-size:14px; background:#41b883; color:#ffffff;', item)
+          item.target.setAttribute('observer-state', 'finish')
+          item.target.setAttribute("src", item.target.getAttribute('data-src'))
+          item.target.style.opacity = 1
+        }, 100)
+      })
+    </script>
+  </body>
+</html>

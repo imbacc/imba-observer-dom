@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "es6",
+    "baseUrl": ".",
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": false,
+    "allowJs": true,
+    "checkJs": true,
+    "esModuleInterop": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "moduleResolution": "node",
+    "lib": ["es5", "es6", "esnext", "dom"],
+    "alwaysStrict": true,
+    "declaration": true,
+    "diagnostics": true,
+    // "incremental": true,
+    // "experimentalDecorators": true,
+    // "emitDecoratorMetadata": true,
+    "noImplicitAny": true,
+    "skipLibCheck": false,
+    "importHelpers": true,
+    "pretty": true,
+    "rootDir": "./libs",
+    "outDir": "./dist",
+    "types": ["node"],
+    "typeRoots": ["types", "node_modules/@types"]
+  },
+  "include": ["libs/**/*.ts", "libs/**/*.tsx", "libs/**/*.vue"],
+  "exclude": ["node_modules", "tests", "docs", "dist", ".history"]
+}
